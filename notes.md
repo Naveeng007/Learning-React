@@ -49,3 +49,13 @@ class Option extends React.Component{
 ```
 
 e.preventDefault()//stops refreshing of page
+
+```js
+> Without bable we had to write these codes for template
+import ReactDOM from 'react-dom'
+const React=require('react')
+const template=React.createElement('p',{},'test123');//this one...<p>test123</p>
+ReactDOM.render (template,document.getElementById('app'))
+
+
+      // "build-babel": "babel src/app.js --out-file=public/script/app.js --presets=env,react --watch", //script part of package.json
