@@ -15,6 +15,22 @@ module.exports={
             // use: {
             //     loader: 'babel-loader',
             // },
+            
+        },{
+            // test: /\.css/, //this is for css
+            // use:[
+            //     'style-loader',
+            //     'css-loader'
+            // ]
+
+            test:/\.scss/,//for scss file
+            use:[
+                'style-loader',//order matters
+                'css-loader',
+                'sass-loader',//it will use node-sass loader in background
+                
+               
+            ]
         }]
     },
     mode: 'none',
@@ -23,4 +39,10 @@ module.exports={
             'process.env.NODE_ENV': JSON.stringify('development')
         })
     ],
+    devtool:'eval-cheap-module-source-map',
+
+    //if u are using webpack server then you can delete bundle.js file bz it will handle its own
+    devServer:{// Webpack server is somewhat faster than live-server
+        contentBase:path.join(__dirname,'public')//when there is error of socket change port from 8080 to 8081..don't know why
+    }
 }

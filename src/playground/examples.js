@@ -59,3 +59,43 @@ const appRender=()=>{
 appRender()
 
 /********************************* */
+
+/*********one method of rendering */
+
+const Headd=(props)=>{
+    return (
+        <div>
+        <h1>Hell hdead</h1>
+        {props.content}
+        </div>
+    );
+}
+const template=(
+  
+        <div>
+            <p>Hello My name is templta</p>
+        </div>
+ 
+);
+
+ReactDOM.render(<Headd content={template}/>,document.getElementById('app'))
+
+
+/********** */
+const Headd=(props)=>{
+    return (
+        <div>
+        <h1>Hell hdead</h1>
+        {props.children}
+        </div>
+    );
+}
+
+ReactDOM.render((
+<Headd >
+        <div>
+            <p>Hello My name is templta</p>
+        </div>
+</Headd>
+),document.getElementById('app'))
+/******************* */

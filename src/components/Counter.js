@@ -1,5 +1,5 @@
 const React=require('react')
-
+import Pop from './popping'
 export default class Counter extends React.Component{
     constructor(props){
         super(props);
@@ -7,9 +7,12 @@ export default class Counter extends React.Component{
         this.decrement=this.decrement.bind(this)
         this.reset=this.reset.bind(this)
         this.funny=this.funny.bind(this)
+        this.setpop=this.setpop.bind(this)
+        this.cutpop=this.cutpop.bind(this)
         this.state={
             count:0,
-            naam:"naveen"
+            naam:"naveen",
+            selected_value:undefined
         }
 
     }
@@ -24,6 +27,19 @@ export default class Counter extends React.Component{
         console.log('changing page or component data');
     }
 
+    cutpop(){
+        this.setState(()=>{
+           return{ selected_value:''}
+        })
+    }
+    setpop(){
+        this.setState(()=>{
+            return {
+                selected_value:"true"
+            }
+        })
+    }
+
     increment(){
         this.setState((prevState)=>{
            return {
@@ -33,6 +49,7 @@ export default class Counter extends React.Component{
         })
 
     }
+   
     decrement(){
         this.setState((prevState)=>{
             return {
@@ -56,11 +73,20 @@ export default class Counter extends React.Component{
             <div>
                 <h1>Count: {this.state.count}</h1>
                 <h3>name:{this.state.naam}</h3>
-                
+                <form>
+                    <input val="normal"></input>
+                    <button >Submit</button>
+                </form>
                 <button onClick={this.increment}>+1</button>
                 <button onClick={this.decrement}>-1</button>
                 <button onClick={this.reset}>reset</button>
                 <Body fun={this.funny}/>
+                <button onClick={this.setpop}>Show Modal</button>
+                <Pop 
+                    selectedOption={this.state.selected_value}
+                    close={this.cutpop}
+                />
+                {/* if it is empty means false else true..we can set it dynamically */}
 
             </div>
         )
